@@ -1,0 +1,42 @@
+# ==============================================
+# .gitignore — OODI Energy Manager
+# ==============================================
+
+# --- Secrets & configuration locale ---
+.env
+
+# --- Base de données locale ---
+*.db
+*.sqlite
+*.sqlite3
+
+# --- Fichiers générés à l'exécution ---
+*.log
+planning_emails.txt
+emails_sent.log
+
+# --- Python ---
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.egg-info/
+dist/
+build/
+.eggs/
+*.egg
+.venv/
+venv/
+env/
+
+# --- Médias lourds ---
+*.mp4
+*.avi
+*.mkv
+*.mov
+
+# --- IDE ---
+.vscode/
+.idea/
+*.swp
+*.swo

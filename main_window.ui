@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>734</width>
+    <height>700</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Oodi Energy Manager — Helsinki FabLab</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QFrame" name="header">
+      <property name="frameShape">
+       <enum>QFrame::StyledPanel</enum>
+      </property>
+      <layout class="QHBoxLayout" name="header_layout">
+       <property name="leftMargin">
+        <number>20</number>
+       </property>
+       <property name="topMargin">
+        <number>20</number>
+       </property>
+       <property name="rightMargin">
+        <number>20</number>
+       </property>
+       <property name="bottomMargin">
+        <number>20</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="lbl_title">
+         <property name="font">
+          <font>
+           <pointsize>16</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="text">
+          <string>OODI ENERGY MANAGER : BY VODOO</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="lbl_date">
+         <property name="text">
+          <string>Date</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
+    </item>
+    <item>
+     <widget class="QTabWidget" name="tabs">
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <widget class="QWidget" name="tab_dash">
+       <attribute name="title">
+        <string>Tableau de bord</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="dash_layout">
+        <item>
+         <layout class="QHBoxLayout" name="dash_date_layout">
+          <item>
+           <widget class="QLabel" name="label_date_deb">
+            <property name="text">
+             <string>Du :</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QDateEdit" name="date_debut">
+            <property name="displayFormat">
+             <string>yyyy-MM-dd</string>
+            </property>
+            <property name="calendarPopup">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="label_date_fin">
+            <property name="text">
+             <string>Au :</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QDateEdit" name="date_fin">
+            <property name="displayFormat">
+             <string>yyyy-MM-dd</string>
+            </property>
+            <property name="calendarPopup">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_analyse">
+            <property name="text">
+             <string>CHERCHER</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QLabel" name="lbl_status_data">
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="cards_layout">
+          <item>
+           <widget class="QGroupBox" name="card_facture">
+            <property name="title">
+             <string>FACTURE TOTALE</string>
+            </property>
+            <layout class="QVBoxLayout">
+             <item>
+              <widget class="QLabel" name="lbl_facture_val">
+               <property name="text">
+                <string>—</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="card_conso">
+            <property name="title">
+             <string>CONSOMMATION</string>
+            </property>
+            <layout class="QVBoxLayout">
+             <item>
+              <widget class="QLabel" name="lbl_conso_val">
+               <property name="text">
+                <string>—</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+          <item>
+           <widget class="QGroupBox" name="card_prix">
+            <property name="title">
+             <string>PRIX MOYEN</string>
+            </property>
+            <layout class="QVBoxLayout">
+             <item>
+              <widget class="QLabel" name="lbl_prix_val">
+               <property name="text">
+                <string>—</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QWidget" name="graph_zone" native="true">
+          <layout class="QVBoxLayout" name="graph_layout">
+           <item>
+            <widget class="QScrollArea" name="scroll_area">
+             <property name="widgetResizable">
+              <bool>true</bool>
+             </property>
+             <widget class="QWidget" name="scroll_content">
+              <property name="geometry">
+               <rect>
+                <x>0</x>
+                <y>0</y>
+                <width>672</width>
+                <height>439</height>
+               </rect>
+              </property>
+              <layout class="QVBoxLayout" name="scroll_layout">
+               <item>
+                <widget class="QLabel" name="lbl_placeholder">
+                 <property name="text">
+                  <string>Sélectionne une période et cherche les données</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_config">
+       <attribute name="title">
+        <string>Configuration</string>
+       </attribute>
+       <layout class="QHBoxLayout" name="config_layout">
+        <item>
+         <widget class="QGroupBox" name="group_machines">
+          <property name="title">
+           <string>MACHINES (Ressources)</string>
+          </property>
+          <layout class="QVBoxLayout" name="mac_layout">
+           <item>
+            <layout class="QFormLayout" name="form_machines">
+             <item row="0" column="0">
+              <widget class="QLabel" name="l1">
+               <property name="text">
+                <string>Nom Machine</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="input_nom"/>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="l2">
+               <property name="text">
+                <string>Puissance (W)</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QLineEdit" name="input_puissance"/>
+             </item>
+             <item row="2" column="0">
+              <widget class="QLabel" name="l3">
+               <property name="text">
+                <string>Email Opérateur</string>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1">
+              <widget class="QLineEdit" name="input_operateur"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_add">
+             <property name="text">
+              <string>Ajouter Machine</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_edit">
+             <property name="text">
+              <string>Modifier Machine</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_del">
+             <property name="text">
+              <string>Supprimer Machine</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeType">
+              <enum>QSizePolicy::Minimum</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>50</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="table_machines">
+             <column>
+              <property name="text">
+               <string>Nom</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Puissance (W)</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Email</string>
+              </property>
+             </column>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="group_produits">
+          <property name="title">
+           <string>PRODUITS (Process)</string>
+          </property>
+          <layout class="QVBoxLayout" name="prod_layout">
+           <item>
+            <layout class="QFormLayout" name="form_produits">
+             <item row="0" column="0">
+              <widget class="QLabel" name="p1">
+               <property name="text">
+                <string>Nom Produit</string>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="1">
+              <widget class="QLineEdit" name="input_produit_nom"/>
+             </item>
+             <item row="1" column="0">
+              <widget class="QLabel" name="p_budget_lbl">
+               <property name="text">
+                <string>Budget max (€)</string>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1">
+              <widget class="QDoubleSpinBox" name="spin_budget_produit">
+               <property name="specialValueText">
+                <string>Pas de limite</string>
+               </property>
+               <property name="minimum">
+                <double>0.000000000000000</double>
+               </property>
+               <property name="maximum">
+                <double>9999.000000000000000</double>
+               </property>
+               <property name="value">
+                <double>0.000000000000000</double>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="step_layout">
+             <item>
+              <widget class="QComboBox" name="combo_machine"/>
+             </item>
+             <item>
+              <widget class="QSpinBox" name="spin_duree">
+               <property name="maximum">
+                <number>1440</number>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="btn_add_etape">
+               <property name="text">
+                <string>+ Etape</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="QLabel" name="lbl_etapes_recap">
+             <property name="text">
+              <string>Etapes : (aucune)</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_reset">
+             <property name="text">
+              <string>Réinitialiser étapes</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_add2">
+             <property name="text">
+              <string>Sauvegarder produit</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_edit2">
+             <property name="text">
+              <string>Modifier Produit</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QPushButton" name="btn_del2">
+             <property name="text">
+              <string>Supprimer Produit</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QTableWidget" name="table_produits">
+             <column>
+              <property name="text">
+               <string>Produit</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Séquence</string>
+              </property>
+             </column>
+             <column>
+              <property name="text">
+               <string>Budget max (€)</string>
+              </property>
+             </column>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_commandes">
+       <attribute name="title">
+        <string>Commandes</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="cmd_layout">
+        <item>
+         <layout class="QHBoxLayout" name="cmd_form_layout">
+          <item>
+           <widget class="QLabel" name="c1">
+            <property name="text">
+             <string>Produit :</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QComboBox" name="combo_produit"/>
+          </item>
+          <item>
+           <widget class="QLabel" name="c2">
+            <property name="text">
+             <string>Départ :</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QTimeEdit" name="time_heure">
+            <property name="displayFormat">
+             <string>HH'h'mm</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QCheckBox" name="check_optimiser">
+            <property name="text">
+             <string>Auto-optimiser</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLabel" name="c3">
+            <property name="text">
+             <string>Qté :</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="input_qte"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_lancer">
+            <property name="text">
+             <string>Lancer</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <widget class="QTableWidget" name="table_commandes">
+          <column>
+           <property name="text">
+            <string>Produit</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Départ</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Fin</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Quantité</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Coût/unité</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Coût total</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Optimisé</string>
+           </property>
+          </column>
+          <column>
+           <property name="text">
+            <string>Budget respecté</string>
+           </property>
+          </column>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="cmd_bottom">
+          <item>
+           <widget class="QLabel" name="lbl_total">
+            <property name="font">
+             <font>
+              <pointsize>12</pointsize>
+              <weight>75</weight>
+              <bold>true</bold>
+             </font>
+            </property>
+            <property name="text">
+             <string>Total : 0.00 €</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="hs3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_del_cmd">
+            <property name="text">
+             <string>— Annuler commande</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_envoyer">
+            <property name="text">
+             <string>Envoyer planning aux opérateurs</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_alert">
+       <attribute name="title">
+        <string>Alertes Prix</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="alert_layout">
+        <item>
+         <widget class="QLabel" name="prixleplushaut">
+          <property name="text">
+           <string>TextLabel</string>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="lbl_statut">
+          <property name="text">
+           <string>Statut...</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="alert_top">
+          <item>
+           <widget class="QLabel" name="a1">
+            <property name="text">
+             <string>Seuil d'alerte :</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QDoubleSpinBox" name="spin_threshold">
+            <property name="minimum">
+             <double>-500.000000000000000</double>
+            </property>
+            <property name="maximum">
+             <double>500.000000000000000</double>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="hs4">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>0</width>
+              <height>0</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btn_refresh_alert">
+            <property name="text">
+             <string>ACTUALISER</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+        <item>
+         <layout class="QHBoxLayout" name="alert_bottom">
+          <item>
+           <widget class="QTableWidget" name="table_alertes">
+            <column>
+             <property name="text">
+              <string>Début</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Fin</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Durée</string>
+             </property>
+            </column>
+            <column>
+             <property name="text">
+              <string>Moyenne</string>
+             </property>
+            </column>
+           </widget>
+          </item>
+          <item>
+           <widget class="QWidget" name="graph_frame" native="true">
+            <layout class="QVBoxLayout" name="graph_layout_alertes"/>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
