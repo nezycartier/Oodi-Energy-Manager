@@ -14,7 +14,7 @@ Développée dans le cadre du cours de **Systèmes d'Information** (remise 22270
 ## Technologies
 
 - Python 3.10+
-- PyQt5 (interface graphique)
+- PyQt6 (interface graphique)
 - SQLite (base de données locale)
 - `entsoe-py` (API ENTSO-E Transparency Platform)
 - `pandas`, `matplotlib`
@@ -29,7 +29,7 @@ cd oodi-energy-manager
 
 ### 2. Installer les dépendances
 ```bash
-pip install PyQt5 pandas matplotlib requests entsoe-py python-dotenv
+pip install PyQt6 pandas matplotlib requests entsoe-py python-dotenv
 ```
 
 ### 3. Configurer les clés API
